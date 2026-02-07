@@ -30,7 +30,7 @@ class Manga {
     return {
       'id': id,
       'type': type,
-      'attributes': jsonEncode(attributes),
+      'attributes': jsonEncode(attributes.toMap()),
       'rating': rating,
       'price': price,
     };
@@ -40,7 +40,7 @@ class Manga {
     return Manga(
       id: map['id'],
       type: map['type'],
-      attributes: jsonDecode(map['attributes'] ?? '{}'),
+      attributes: jsonDecode(map['attributes']),
       rating: map['rating'],
       price: map['price'],
     );

@@ -1,7 +1,9 @@
+import 'dart:convert';
 
 import 'package:comic_app_gpt/utils/poster_image.dart';
 import 'package:hive/hive.dart';
-part"manga_attribute.g.dart";
+
+part "manga_attribute.g.dart";
 
 @HiveType(typeId: 1)
 class MangaAttributes {
@@ -36,20 +38,51 @@ class MangaAttributes {
     required this.createdAt,
     required this.favoriteCount,
     required this.userCount,
-    required this.description
+    required this.description,
   });
 
-  factory MangaAttributes.fromJson(Map<String, dynamic> json){
-    return MangaAttributes(posterImage:  PosterImage.fromJson(json['posterImage']),
-        updatedAt: json["updatedAt"],
-        status: json["status"],
-        averageRating: json["averageRating"],
-        canonicalTitle: json["canonicalTitle"],
-        chapterCount: json["chapterCount"],
-        createdAt: json["createdAt"],
-        favoriteCount: json["favoriteCount"] ?? 0,
-        userCount: json["userCount"] ?? 0,
-        description: json["description"] ?? "Unknown"
+  Map<String, dynamic> toMap() {
+    return {
+      "posterImage": jsonEncode(posterImage.toMap()),
+      "updateAt": updatedAt,
+      "status": status,
+      "averageRating": averageRating,
+      "canonicalTitle": canonicalTitle,
+      "chapterCount": chapterCount,
+      "createdAt": createdAt,
+      "favoriteCount": favoriteCount,
+      "userCount": userCount,
+      "description": description,
+    };
+  }
+
+  factory MangaAttributes.fromMap(Map<String, dynamic> maps) {
+    return MangaAttributes(
+      posterImage: jsonDecode(maps["posterImage"]),
+      updatedAt: maps["updatedAt"],
+      status: maps["status"],
+      averageRating: maps["averageRating"],
+      canonicalTitle: maps["canonicalTitle"],
+      chapterCount: maps["chapterCount"],
+      createdAt: maps["createdAt"],
+      favoriteCount: maps["favoriteCount"],
+      userCount: maps["userCount"],
+      description: maps["description"],
+    );
+  }
+
+  factory MangaAttributes.fromJson(Map<String, dynamic> json) {
+    return MangaAttributes(
+      posterImage: PosterImage.fromJson(json['posterImage']),
+      updatedAt: json["updatedAt"],
+      status: json["status"],
+      averageRating: json["averageRating"],
+      canonicalTitle: json["canonicalTitle"],
+      chapterCount: json["chapterCount"],
+      createdAt: json["createdAt"],
+      favoriteCount: json["favoriteCount"] ?? 0,
+      userCount: json["userCount"] ?? 0,
+      description: json["description"] ?? "Unknown",
     );
   }
 }
