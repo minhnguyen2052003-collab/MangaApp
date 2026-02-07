@@ -1,4 +1,5 @@
 import 'package:comic_app_gpt/presentation/detail_manga_screen/modelview/favor_manga_controller.dart';
+import 'package:comic_app_gpt/presentation/favorite_manga_screen/modelview/favorite_notifier_provider.dart';
 import 'package:comic_app_gpt/utils/Manga.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +13,10 @@ class ListFavoriteMangaScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(favorMangaController);
-  List<Manga> listFavorite = controller.getFavorManga();
+    final favorites = ref.watch(favoriteProvider);
 
-    return listFavorite.isEmpty
+
+    return favorites.isEmpty
         ? Center(child: Text("Nothing..."))
         : GridView.builder(
       padding: const EdgeInsets.all(12),
@@ -26,10 +27,10 @@ class ListFavoriteMangaScreen extends ConsumerWidget {
         mainAxisSpacing: 16,
       ),
       // Cộng thêm 1 ô ở cuối để chứa cái vòng quay Loading khi đang kéo
-      itemCount: listFavorite.length,
+      itemCount: favorites.length,
       itemBuilder: (context, index) {
 
-        final manga = listFavorite[index];
+        final manga = favorites[index];
         return MangaItemWidget(manga: manga);
       },
     );

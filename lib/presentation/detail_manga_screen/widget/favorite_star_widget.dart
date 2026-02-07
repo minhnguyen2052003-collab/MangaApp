@@ -1,5 +1,6 @@
 
 import 'package:comic_app_gpt/presentation/detail_manga_screen/modelview/manga_local_controller.dart';
+import 'package:comic_app_gpt/presentation/favorite_manga_screen/modelview/favorite_notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,16 +26,20 @@ class _FavoriteStarWidgetState extends ConsumerState<FavoriteStarWidget> {
   @override
   Widget build(BuildContext context) {
 
-    final state = ref.watch(mangaLocalController(int.parse(widget.selectedManga.id)));
+    // final state = ref.watch(mangaLocalController(int.parse(widget.selectedManga.id)));
+    final favorites = ref.watch(favoriteProvider);
+    final isFav = favorites.any((e) => e.id == widget.selectedManga.id);
 
 
 
 
     return IconButton(
       onPressed: () {
-        ref.read(mangaLocalController(int.parse(widget.selectedManga.id)).notifier).toggle(widget.selectedManga, int.parse(widget.selectedManga.id));
+        // ref.read(mangaLocalController(int.parse(widget.selectedManga.id)).notifier).toggle(widget.selectedManga, int.parse(widget.selectedManga.id));
+        ref.read(favoriteProvider.notifier).toggleFavorite(widget.selectedManga);
+
       },
-      icon: Icon( state ? Icons.star : Icons.star_border ),
+      icon: Icon( isFav? Icons.star : Icons.star_border ),
       style: IconButton.styleFrom(
         foregroundColor: Colors.amber,
         iconSize: 32,
