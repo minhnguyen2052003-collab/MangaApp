@@ -1,48 +1,50 @@
+import 'dart:async';
+
+import 'package:comic_app_gpt/data/data_source/favorite_local_db.dart';
 import 'package:comic_app_gpt/domain/repository/favorite_repository.dart';
-import 'package:comic_app_gpt/utils/Manga.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
 import '../../../data/repository/favorite_repository_impl.dart';
+import '../../../domain/utils/Manga.dart';
 
-class FavoriteNotifierProvider extends StateNotifier<List<Manga>>{
-  final FavoriteRepository repository;
-  FavoriteNotifierProvider(this.repository) : super([]){
-    loadFavorites();
+class FavoriteNotifier extends AsyncNotifier<List<Manga>>{
+  FavoriteRepositoryImpl get repository =>
+      ref.read(favoriteRepoProvider);
+
+  @override
+  FutureOr<List<Manga>> build() {
+    return repository.getFavorites();
   }
 
-  Future<List<Manga>> loadFavorites() async {
-    state = await repository.getFavorites();
-    return state;
 
-  }
-  Future<void> add(Manga manga) async{
+  Future<void> addFavorite (Manga manga) async{
     await repository.addFavorite(manga);
-    state = [...state,manga];
+    state = AsyncData(await build());
   }
 
-  Future<void> remove(int id) async {
+  Future<void> remove(String id) async {
     await repository.removeFavorite(id);
-    state = state.where((e) => e.id != id).toList();
+    state = AsyncData(await build());
   }
   Future<void> toggleFavorite(Manga manga) async {
-    final exists = state.any((e) => e.id == manga.id);
+    final current = state.value ?? [];
+    final exist = current.any((e) => e.id == manga.id);
+    if(exist){
+      await repository.removeFavorite(manga.id);
 
-    if (exists) {
-      await repository.removeFavorite(int.parse(manga.id));
-      state = state.where((e) => e.id != manga.id).toList();
-    } else {
+    }else{
       await repository.addFavorite(manga);
-      state = [...state, manga];
     }
+    final newList = await repository.getFavorites();
+
+    state = AsyncData(newList);
   }
-  bool isFavorite(int id) {
-    return state.any((e) => e.id == id);
-  }
+
 }
 
 
 final favoriteProvider =
-StateNotifierProvider<FavoriteNotifierProvider, List<Manga>>(
-      (ref) => FavoriteNotifierProvider(ref.read(favoriteRepoProvider)),
+AsyncNotifierProvider<FavoriteNotifier, List<Manga>>(
+    FavoriteNotifier.new
 );

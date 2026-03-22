@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 import '../../payment_screen/view/payment_screen.dart';
 import '../../rating_screen/view/rating_screen.dart';
 import '../widget/basic_infor_comic.dart';
@@ -18,7 +18,6 @@ class MangaDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _isFavorite = false;
 
     return Scaffold(
       backgroundColor: Colors.white,

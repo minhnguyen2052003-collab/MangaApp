@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:comic_app_gpt/data/manga_api.dart';
 
 import '../../../data/dio_client.dart';
-import '../../../utils/Manga.dart';
-import '../../../utils/category.dart';
+import '../../../domain/utils/Manga.dart';
+import '../../../domain/utils/category.dart';
 
 class TagsWidget extends StatelessWidget{
    const TagsWidget({super.key, required this.selectedManga});

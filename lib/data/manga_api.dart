@@ -1,7 +1,9 @@
 
 import 'package:dio/dio.dart';
 
-import '../utils/Manga.dart';
+import '../domain/utils/Manga.dart';
+
+
 
 class MangaApi {
   final Dio dio;

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:comic_app_gpt/data/manga_api.dart';
 
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 import '../../detail_manga_screen/view/manga_detail_screen.dart';
 
 

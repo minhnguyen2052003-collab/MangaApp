@@ -19,9 +19,9 @@ class PosterImage {
 
   factory PosterImage.fromMap(Map<String, dynamic> maps) {
     return PosterImage(
-      large: maps["large"],
-      medium: maps["medium"],
-      tiny: maps["tiny"],
+      large: maps["large"] ?? "",
+      medium: maps["medium"] ?? "",
+      tiny: maps["tiny"] ?? "",
     );
   }
 

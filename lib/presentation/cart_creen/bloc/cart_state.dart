@@ -1,4 +1,6 @@
-import 'package:comic_app_gpt/utils/Manga.dart';
+
+
+import '../../../domain/utils/Manga.dart';
 
 sealed class CartState {}
 

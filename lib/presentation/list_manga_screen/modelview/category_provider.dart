@@ -1,7 +1,7 @@
 
 import 'package:flutter_riverpod/legacy.dart';
 
-import '../../../utils/category.dart';
+import '../../../domain/utils/category.dart';
 import 'category_controller.dart';
 
 class ListCategoryState {

@@ -1,8 +1,9 @@
 import 'package:comic_app_gpt/domain/repository/manga_local_repository.dart';
 import 'package:comic_app_gpt/domain/service/manga_local_data.dart';
-import 'package:comic_app_gpt/utils/Manga.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
+
+import '../../../domain/utils/Manga.dart';
 
 class FavorMangaController {
   final MangaLocalRepository mangaLocalRepository;

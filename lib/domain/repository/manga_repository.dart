@@ -1,7 +1,7 @@
 
 import 'package:comic_app_gpt/data/manga_api.dart';
 
-import '../../utils/Manga.dart';
+import '../utils/Manga.dart';
 
 class MangaRepository {
   final MangaApi mangaApi ;

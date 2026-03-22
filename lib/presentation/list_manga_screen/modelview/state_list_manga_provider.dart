@@ -4,7 +4,7 @@ import 'package:comic_app_gpt/presentation/list_manga_screen/modelview/manga_con
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 import 'list_manga_state.dart';
 import '../../../data/manga_api.dart';
 

@@ -5,9 +5,6 @@ import 'package:comic_app_gpt/domain/usecase/get_cart_items.dart';
 import 'package:comic_app_gpt/presentation/cart_creen/bloc/cart_bloc.dart';
 import 'package:comic_app_gpt/presentation/cart_creen/bloc/cart_event.dart';
 import 'package:comic_app_gpt/presentation/first_creen/view/first_screen.dart';
-import 'package:comic_app_gpt/utils/Manga.dart';
-import 'package:comic_app_gpt/utils/manga_attribute.dart';
-import 'package:comic_app_gpt/utils/poster_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +12,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'domain/utils/Manga.dart';
+import 'domain/utils/manga_attribute.dart';
+import 'domain/utils/poster_image.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

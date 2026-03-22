@@ -1,5 +1,6 @@
 import 'package:comic_app_gpt/domain/service/manga_local_data.dart';
-import 'package:comic_app_gpt/utils/Manga.dart';
+
+import '../utils/Manga.dart';
 
 class MangaLocalRepository {
   final MangaLocalData mangaLocalData;

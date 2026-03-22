@@ -1,8 +1,10 @@
-import 'package:comic_app_gpt/utils/Manga.dart';
+
+
+import '../utils/Manga.dart';
 
 abstract class FavoriteRepository {
   Future<List<Manga>> getFavorites();
   Future<void> addFavorite(Manga manga);
-  Future<void> removeFavorite(int id);
-  Future<bool> isFavorite(int id);
+  Future<void> removeFavorite(String id);
+  Future<bool> isFavorite(String id);
 }

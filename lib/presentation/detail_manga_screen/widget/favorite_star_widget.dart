@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 import '../modelview/favorite_manga_provider.dart';
 import '../modelview/status_star_provider.dart';
 
@@ -27,8 +27,8 @@ class _FavoriteStarWidgetState extends ConsumerState<FavoriteStarWidget> {
   Widget build(BuildContext context) {
 
     // final state = ref.watch(mangaLocalController(int.parse(widget.selectedManga.id)));
-    final favorites = ref.watch(favoriteProvider);
-    final isFav = favorites.any((e) => e.id == widget.selectedManga.id);
+    final list = ref.watch(favoriteProvider).value ?? [];
+    final isFav = list.any((e) => e.id == widget.selectedManga.id);
 
 
 

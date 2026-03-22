@@ -2,7 +2,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/repository/categories_repository.dart';
-import '../../../utils/category.dart';
+import '../../../domain/utils/category.dart';
 
 class CategoriesController {
   final CategoriesRepository categoriesRepository;

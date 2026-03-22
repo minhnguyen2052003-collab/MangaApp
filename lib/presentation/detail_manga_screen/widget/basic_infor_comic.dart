@@ -3,7 +3,7 @@ import 'package:comic_app_gpt/presentation/detail_manga_screen/widget/tags.dart'
 import 'package:flutter/material.dart';
 
 
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 
 class BasicInforMangaWidget extends StatelessWidget{
   const BasicInforMangaWidget({super.key, required this.selectedManga, required this.isBuying});

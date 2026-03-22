@@ -1,7 +1,8 @@
-import 'dart:math';
 
-import 'package:comic_app_gpt/utils/Manga.dart';
+
 import 'package:hive/hive.dart';
+
+import '../utils/Manga.dart';
 
 class MangaLocalData {
   final Box<Manga> box;

@@ -4,7 +4,6 @@ import 'package:comic_app_gpt/presentation/cart_creen/bloc/cart_event.dart';
 import 'package:comic_app_gpt/presentation/cart_creen/bloc/cart_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../utils/Manga.dart';
 
 class CartBloc extends Bloc<CartEvent,CartState>{
   final AddToCartUseCase addComicToCartUseCase;

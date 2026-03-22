@@ -1,7 +1,7 @@
 
 import 'package:flutter_riverpod/legacy.dart';
 
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 
 class FavoriteMangaProvider extends StateNotifier<List<Manga>> {
   FavoriteMangaProvider() : super([]);

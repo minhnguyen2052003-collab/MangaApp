@@ -1,5 +1,7 @@
-import 'package:comic_app_gpt/utils/Manga.dart';
+
 import 'package:hive/hive.dart';
+
+import '../utils/Manga.dart';
 
 class CartData {
   final Box<Manga> box;

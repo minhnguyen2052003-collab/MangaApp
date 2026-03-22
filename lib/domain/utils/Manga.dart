@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:math';
 import 'package:hive/hive.dart';
 import 'manga_attribute.dart';
@@ -38,11 +39,13 @@ class Manga {
 
   factory Manga.fromMap(Map<String, dynamic> map) {
     return Manga(
-      id: map['id'],
-      type: map['type'],
-      attributes: jsonDecode(map['attributes']),
-      rating: map['rating'],
-      price: map['price'],
+      id: map['id'].toString(),
+      type: map['type'] as String,
+      attributes: MangaAttributes.fromMap(
+        jsonDecode(map['attributes']),
+      ),
+      rating: (map['rating'] as num).toDouble(),
+      price: map['price'] as int?,
     );
   }
 

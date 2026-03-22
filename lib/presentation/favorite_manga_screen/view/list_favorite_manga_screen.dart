@@ -1,6 +1,5 @@
 import 'package:comic_app_gpt/presentation/detail_manga_screen/modelview/favor_manga_controller.dart';
 import 'package:comic_app_gpt/presentation/favorite_manga_screen/modelview/favorite_notifier_provider.dart';
-import 'package:comic_app_gpt/utils/Manga.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,26 +12,26 @@ class ListFavoriteMangaScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favorites = ref.watch(favoriteProvider);
+    final favoritesState = ref.watch(favoriteProvider);
 
-
-    return favorites.isEmpty
-        ? Center(child: Text("Nothing..."))
-        : GridView.builder(
-      padding: const EdgeInsets.all(12),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.65, // Tỉ lệ chiều rộng/cao của ô truyện
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 16,
+    return favoritesState.when(
+      data: (list) => GridView.builder(
+        padding: const EdgeInsets.all(12),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.65, // Tỉ lệ chiều rộng/cao của ô truyện
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 16,
+        ),
+        // Cộng thêm 1 ô ở cuối để chứa cái vòng quay Loading khi đang kéo
+        itemCount: list.length,
+        itemBuilder: (context, index) {
+          final manga = list[index];
+          return MangaItemWidget(manga: manga);
+        },
       ),
-      // Cộng thêm 1 ô ở cuối để chứa cái vòng quay Loading khi đang kéo
-      itemCount: favorites.length,
-      itemBuilder: (context, index) {
-
-        final manga = favorites[index];
-        return MangaItemWidget(manga: manga);
-      },
+      error: (e, _) => Center(child: Text("Error")),
+      loading: () => Center(child: CircularProgressIndicator()),
     );
   }
 }

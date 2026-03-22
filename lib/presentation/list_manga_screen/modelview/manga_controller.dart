@@ -1,5 +1,5 @@
 import '../../../domain/repository/manga_repository.dart';
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 
 class MangaController {
   final MangaRepository repository;

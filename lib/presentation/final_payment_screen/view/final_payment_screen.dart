@@ -5,7 +5,7 @@ import 'package:comic_app_gpt/presentation/detail_manga_screen/widget/basic_info
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../utils/Manga.dart';
+import '../../../domain/utils/Manga.dart';
 
 class FinalPaymentScreen extends StatelessWidget {
   const FinalPaymentScreen({

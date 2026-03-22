@@ -1,7 +1,7 @@
 import 'package:comic_app_gpt/data/categories_api.dart';
 import 'package:riverpod/riverpod.dart';
 
-import '../../utils/category.dart';
+import '../utils/category.dart';
 
 class CategoriesRepository {
   final CategoriesApi categoriesApi;

@@ -1,6 +1,8 @@
 import 'package:comic_app_gpt/domain/service/cart_data_local.dart';
 
-import '../../utils/Manga.dart';
+import '../utils/Manga.dart';
+
+
 
 abstract class CartRepository {
   Future<void> addToCart(Manga manga);

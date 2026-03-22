@@ -1,7 +1,7 @@
 
 import 'package:dio/dio.dart';
 
-import '../utils/category.dart';
+import '../domain/utils/category.dart';
 
 class TagApi {
   final Dio dio;

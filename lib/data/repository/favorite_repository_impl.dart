@@ -1,8 +1,9 @@
 import 'package:comic_app_gpt/data/data_source/favorite_local_db.dart';
 import 'package:comic_app_gpt/domain/repository/favorite_repository.dart';
-import 'package:comic_app_gpt/utils/Manga.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../domain/utils/Manga.dart';
 
 class FavoriteRepositoryImpl implements FavoriteRepository {
   final FavoriteDB _db = FavoriteDB();
@@ -26,13 +27,13 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
   }
 
   @override
-  Future<void> removeFavorite(int id) async{
+  Future<void> removeFavorite(String id) async{
     final db = await _db.database;
 
     await db.delete('favorites', where: 'id = ?', whereArgs: [id]);
   }
   @override
-  Future<bool> isFavorite(int id) async {
+  Future<bool> isFavorite(String id) async {
     final db = await _db.database;
 
     final result =

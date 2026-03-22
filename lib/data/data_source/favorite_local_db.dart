@@ -18,12 +18,11 @@ class FavoriteDB {
       onCreate: (db, version) async {
         await db.execute('''
       CREATE TABLE favorites(
-            id INTEGER PRIMARY KEY,
-            title TEXT,
+            id TEXT PRIMARY KEY,
             type TEXT,
             attributes TEXT,
             rating REAL,
-            price REAL
+            price INTEGER
           )
       ''');
       },

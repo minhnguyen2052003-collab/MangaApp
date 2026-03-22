@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:comic_app_gpt/utils/poster_image.dart';
+import 'package:comic_app_gpt/domain/utils/poster_image.dart';
 import 'package:hive/hive.dart';
 
 part "manga_attribute.g.dart";
@@ -43,7 +43,7 @@ class MangaAttributes {
 
   Map<String, dynamic> toMap() {
     return {
-      "posterImage": jsonEncode(posterImage.toMap()),
+      "posterImage": posterImage.toMap(),
       "updateAt": updatedAt,
       "status": status,
       "averageRating": averageRating,
@@ -58,7 +58,11 @@ class MangaAttributes {
 
   factory MangaAttributes.fromMap(Map<String, dynamic> maps) {
     return MangaAttributes(
-      posterImage: jsonDecode(maps["posterImage"]),
+      posterImage: PosterImage.fromMap(
+        maps['posterImage'] is String
+            ? jsonDecode(maps['posterImage'])
+            : Map<String, dynamic>.from(maps['posterImage']),
+      ),
       updatedAt: maps["updatedAt"],
       status: maps["status"],
       averageRating: maps["averageRating"],
